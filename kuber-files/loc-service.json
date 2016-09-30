@@ -1,0 +1,25 @@
+{
+   "kind":"Service",
+   "apiVersion":"v1",
+   "metadata":{
+      "name":"loc-api-pod-v2",
+      "annotations": {
+            "service.alpha.kubernetes.io/external-traffic": "OnlyLocal"
+        },
+	"labels":{
+         "app":"loc-api-pod"
+      }
+   },
+   "spec":{
+      "ports": [
+         {
+           "port":8080,
+           "targetPort":"http-server"
+         }
+      ],
+      "selector":{
+         "app":"loc-api-pod"
+      },
+      "type": "LoadBalancer"
+   }
+}

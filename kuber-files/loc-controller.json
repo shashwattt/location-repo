@@ -1,0 +1,37 @@
+{
+   "kind":"ReplicationController",
+   "apiVersion":"v1",
+   "metadata":{
+      "name":"loc-api-pod",
+      "labels":{
+         "app":"loc-api-pod"
+      }
+   },
+   "spec":{
+      "replicas":3,
+      "selector":{
+         "app":"loc-api-pod"
+      },
+      "template":{
+         "metadata":{
+            "labels":{
+               "app":"loc-api-pod"
+            }
+         },
+         "spec":{
+            "containers":[
+               {
+                  "name":"loc-api",
+                  "image":"gcr.io/pretlist-daemons-apps-us-east1/loc-api:v1",
+                  "ports":[
+                     {
+                        "name":"http-server",
+                        "containerPort":8080
+                     }
+                  ]
+               }
+            ]
+         }
+      }
+   }
+}
